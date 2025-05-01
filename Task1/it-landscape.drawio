@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.15 Chrome/134.0.6998.205 Electron/35.2.1 Safari/537.36" version="26.2.15">
   <diagram name="Page-1" id="jv0Cpo0LMHff5WMNBP53">
-    <mxGraphModel dx="1106" dy="605" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1345" dy="605" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -63,12 +63,12 @@
             <mxRectangle width="221" height="70" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BFB-455YsUoUCpmfT80J-62" value="АБС&lt;div&gt;Сайт&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-6">
+        <mxCell id="BFB-455YsUoUCpmfT80J-62" value="АБС&lt;br&gt;&lt;div&gt;Сайт&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-6">
           <mxGeometry x="660" width="221" height="70" as="geometry">
             <mxRectangle width="221" height="70" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BFB-455YsUoUCpmfT80J-50" value="СМС-шлюз" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-6">
+        <mxCell id="BFB-455YsUoUCpmfT80J-50" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-6">
           <mxGeometry x="881" width="221" height="70" as="geometry">
             <mxRectangle width="221" height="70" as="alternateBounds" />
           </mxGeometry>
@@ -78,7 +78,7 @@
             <mxRectangle width="221" height="70" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BFB-455YsUoUCpmfT80J-26" value="АБС&lt;div&gt;Сайт&lt;br&gt;Интернет-банк&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-6">
+        <mxCell id="BFB-455YsUoUCpmfT80J-26" value="АБС&lt;div&gt;Интернет-банк&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-6">
           <mxGeometry x="1323" width="221" height="70" as="geometry">
             <mxRectangle width="221" height="70" as="alternateBounds" />
           </mxGeometry>
@@ -101,7 +101,7 @@
             <mxRectangle width="221" height="60" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BFB-455YsUoUCpmfT80J-63" value="Сайт" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-10">
+        <mxCell id="BFB-455YsUoUCpmfT80J-63" value="Система-кол-центра" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-10">
           <mxGeometry x="660" width="221" height="60" as="geometry">
             <mxRectangle width="221" height="60" as="alternateBounds" />
           </mxGeometry>
@@ -144,7 +144,7 @@
             <mxRectangle width="221" height="70" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BFB-455YsUoUCpmfT80J-52" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-47">
+        <mxCell id="BFB-455YsUoUCpmfT80J-52" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;СМС-шлюз&lt;/span&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-47">
           <mxGeometry x="881" width="221" height="70" as="geometry">
             <mxRectangle width="221" height="70" as="alternateBounds" />
           </mxGeometry>
@@ -154,7 +154,7 @@
             <mxRectangle width="221" height="70" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BFB-455YsUoUCpmfT80J-28" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-47">
+        <mxCell id="BFB-455YsUoUCpmfT80J-28" value="АБС" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="kpPAHCRcE-LL8OOGQHtM-47">
           <mxGeometry x="1323" width="221" height="70" as="geometry">
             <mxRectangle width="221" height="70" as="alternateBounds" />
           </mxGeometry>
