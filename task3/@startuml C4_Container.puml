@@ -1,0 +1,41 @@
+@startuml C4_Container
+!define C4P https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master
+!includeurl C4P.puml
+
+Person(client, "Клиент", "Подаёт заявку через сайт или ИБ")
+
+System_Boundary(bn, "Банк «Стандарт»") {
+  Container(site, "Сайт", "PHP + React", "Форма заявки, отображение депозитов")
+  Container(ib, "Интернет-банк", "ASP.NET MVC", "Подача заявок, персонализированные ставки") {
+    Container(ib_ui, "UI-компоненты", "Razor/JS", "Формы подачи и просмотра заявок")
+    Container(ib_app, "Application Layer", "C#/.NET", "Логика формирования запроса и проверки пользователя")
+    ContainerDb(ib_db, "MS SQL", "Хранение сессий, кеш справочников")
+    Rel(client, ib_ui, "HTTP/HTTPS")
+    Rel(ib_ui, ib_app, "API вызовы")
+    Rel(ib_app, ib_db, "CRUD")
+  }
+  Container(ris, "Request Intake Service", "ASP.NET Web API", "Обработка и маршрутизация заявок") {
+    ContainerDb(ris_db, "MS SQL", "Хранение заявок и статусов")
+  }
+  Container(ctr, "Кол-центр CRM", "Java Spring Boot", "Управление заявками менеджеров") 
+  Container(abs, "АБС", "Delphi + Oracle", "Учёт депозитов, хранение ставок") {
+    Container(abs_ui, "Desktop Client", "Delphi", "Интерфейс бэк-офиса")
+    Container(abs_proc, "PL/SQL Procedures", "Oracle", "Бизнес-логика учёта ставок и заявок")
+    ContainerDb(abs_db, "Oracle", "Данные депозитов и ставок")
+    Rel(ris, abs_proc, "Sync запросы", "JDBC")
+    Rel(abs_proc, abs_db, "Reads/Writes")
+    Rel(abs_ui, abs_proc, "Call procedures")
+  }
+  Container(sms, "SMS-сервис", "REST API", "Отправка уведомлений")
+}
+
+' Внешние связи
+Rel(client, site, "HTTP/HTTPS: подать заявку")
+Rel(site, ris, "REST API")
+Rel(ib_app, ris, "REST API")
+Rel(ris, ctr, "REST API: передать заявку")
+Rel(ris, abs_proc, "JDBC: согласование ставок")
+Rel(ris, sms, "REST API: отправка уведомлений")
+Rel(sms, client, "SMS")
+
+@enduml
