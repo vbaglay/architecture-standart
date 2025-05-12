@@ -1,0 +1,24 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+System_Boundary(ris_boundary, "Request Intake Service") {
+    Container(ris_api, "RIS API", "ASP.NET Core", "Принимает заявки с сайта и ИБ, выполняет авторизацию, валидацию, логирование.")
+    Container(ris_db, "RIS Database", "MS SQL", "Хранение заявок, логов, статусов.")
+    Container(ris_integration, "RIS Integration Layer", "C#", "Интеграция с CRM и АБС, отправка событий.")
+}
+
+System(site, "Публичный сайт", "")
+System(ibs, "Интернет-банк", "")
+System(crm, "CRM/Кол-центр", "")
+System(abs, "АБС", "")
+System_Ext(sms_gateway, "SMS-сервис", "")
+
+Rel(site, ris_api, "POST заявка", "HTTPS")
+Rel(ibs, ris_api, "POST заявка", "HTTPS")
+Rel(ris_api, ris_db, "Запись заявки", "ODBC/EF")
+Rel(ris_api, ris_integration, "Вызывает адаптеры", "Internal call")
+Rel(ris_integration, crm, "Передаёт заявку", "REST")
+Rel(ris_integration, abs, "Создаёт заявку", "JDBC или REST")
+Rel(abs, sms_gateway, "Отправка SMS", "REST / SOAP")
+
+@enduml

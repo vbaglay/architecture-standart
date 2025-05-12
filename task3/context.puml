@@ -1,0 +1,24 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+Person(client_site, "Клиент (сайт)", "Новый пользователь, подаёт заявку на депозит.")
+Person(client_ib, "Клиент (интернет-банк)", "Существующий пользователь ИБ.")
+Person(manager_cc, "Менеджер кол-центра", "Обрабатывает входящие заявки.")
+Person(manager_bo, "Сотрудник бэк-офиса", "Обрабатывает заявку в АБС.")
+System(site, "Публичный сайт", "Форма заявки на депозит для новых клиентов.")
+System(ibs, "Интернет-банк", "Монолитное приложение ASP.NET для клиентов.")
+System(ris, "Request Intake Service", "Принимает, валидирует и маршрутизирует заявки.")
+System(crm, "CRM/Кол-центр", "Обработка входящих заявок и звонков.")
+System(abs, "АБС", "Учёт счетов и ставок, ручная обработка заявок.")
+System_Ext(sms_gateway, "SMS-сервис", "Отправляет SMS-коды клиентам.")
+
+Rel(client_site, site, "Подаёт заявку", "HTTPS")
+Rel(site, ris, "Отправка заявки", "HTTPS + TLS")
+Rel(client_ib, ibs, "Открытие депозита", "HTTPS")
+Rel(ibs, ris, "Отправка заявки в RIS", "HTTPS + TLS")
+Rel(ris, crm, "Передаёт заявку", "REST API")
+Rel(ris, abs, "Создаёт заявку", "JDBC или REST")
+Rel(manager_cc, crm, "Обрабатывает заявку", "UI")
+Rel(manager_bo, abs, "Подтверждает ставку", "Oracle GUI")
+Rel(abs, sms_gateway, "Отправка SMS клиенту", "REST / SOAP")
+@enduml

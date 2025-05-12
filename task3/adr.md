@@ -54,5 +54,4 @@
 
 #### C4 Context (Level 1)
 
-```plantuml
-
+Диаграммы: Task3\container.puml Task3\context.puml
