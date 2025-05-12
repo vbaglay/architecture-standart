@@ -55,26 +55,4 @@
 #### C4 Context (Level 1)
 
 ```plantuml
-@startuml C4_Context
-!define C4P https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master
-!includeurl C4P.puml
 
-Person(client, "Клиент", "Подаёт заявки через сайт или ИБ")
-System_Boundary(bank, "Банк «Стандарт»") {
-  System(site, "Сайт", "PHP + React.js", "Маркетинговая страница + форма заявки")
-  System(ib, "Интернет-банк", "ASP.NET MVC + MS SQL", "Личный кабинет, подача заявки")
-  System(ris, "Request Intake Service", "ASP.NET Web API + MS SQL", "Приём и маршрутизация заявок")
-  System(ctr, "Система кол-центра", "Java Spring Boot + PostgreSQL", "Обработка заявок менеджерами")
-  System(abs, "АБС", "Delphi + Oracle", "Учёт операций и ставок")
-  System(sms, "SMS-сервис", "REST API", "Отправка уведомлений клиентам")
-}
-
-Rel(client, site, "POST /deposit-request", "HTTPS")
-Rel(client, ib, "POST /api/requests", "HTTPS")
-Rel(site, ris, "REST API", "JSON/HTTPS")
-Rel(ib, ris, "REST API", "JSON/HTTPS")
-Rel(ris, ctr, "REST API", "JSON")
-Rel(ris, abs, "JDBC/REST", "Передача заявки на согласование")
-Rel(abs, sms, "REST API", "Отправка SMS")
-Rel(sms, client, "SMS")
-@enduml

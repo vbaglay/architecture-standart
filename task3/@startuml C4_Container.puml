@@ -1,9 +1,7 @@
 @startuml C4_Container
-!define C4P https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master
-!includeurl C4P.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-Person(client, "Клиент", "Подаёт заявку через сайт или ИБ")
-
+Person_Ext(client, "Клиент", "Подаёт заявку через сайт или ИБ")
 System_Boundary(bn, "Банк «Стандарт»") {
   Container(site, "Сайт", "PHP + React", "Форма заявки, отображение депозитов")
   Container(ib, "Интернет-банк", "ASP.NET MVC", "Подача заявок, персонализированные ставки") {
@@ -14,9 +12,9 @@ System_Boundary(bn, "Банк «Стандарт»") {
     Rel(ib_ui, ib_app, "API вызовы")
     Rel(ib_app, ib_db, "CRUD")
   }
-  Container(ris, "Request Intake Service", "ASP.NET Web API", "Обработка и маршрутизация заявок") {
-    ContainerDb(ris_db, "MS SQL", "Хранение заявок и статусов")
-  }
+  Container(ris, "Request Intake Service", "ASP.NET Web API", "Обработка и маршрутизация заявок") 
+  ContainerDb(ris_db, "MS SQL", "Хранение заявок и статусов")
+  
   Container(ctr, "Кол-центр CRM", "Java Spring Boot", "Управление заявками менеджеров") 
   Container(abs, "АБС", "Delphi + Oracle", "Учёт депозитов, хранение ставок") {
     Container(abs_ui, "Desktop Client", "Delphi", "Интерфейс бэк-офиса")

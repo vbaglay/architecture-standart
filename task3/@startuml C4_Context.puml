@@ -1,8 +1,8 @@
 @startuml C4_Context
-!define C4P https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master
-!includeurl C4P.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
 
-Person(client, "Клиент", "Пользователь сайта или интернет-банка")
+
+Person_Ext(client, "Клиент", "Пользователь сайта или интернет-банка")
 System_Boundary(bn, "Банк «Стандарт»") {
   System(site, "Сайт", "PHP + React", "Маркетинговая информация + форма заявки")
   System(ib, "Интернет-банк", "ASP.NET MVC", "Подача заявки, личный кабинет")
