@@ -1,0 +1,42 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+LAYOUT_WITH_LEGEND()
+
+System_Boundary(Bank, "Банк «Стандарт»") {
+  
+  Container(ABS, "АБС\nOracle + PL/SQL", "Хранит ставки и аудит")
+  
+  Container(ExportService, "Сервис экспорта ставок\nC#/.NET", "Генерация, шифрование, API, выгрузка ставок") {
+    ContainerDb(ExportDb, "Export DB\nMS SQL", "Логирование, ошибки, метаданные выгрузок")
+    Component(CSVGen, "CSV Generator", "C#", "Формирует CSV с актуальными и персональными ставками")
+    Component(PGPEnc, "PGP Encryptor", "C#", "Шифрует файлы для партнёров")
+    Component(SFTPClient, "SFTP Client", "C#", "Загружает PGP-файлы на SFTP")
+    Component(RestAPI, "REST API", "ASP.NET Core", "Предоставляет ставки внутреннему CRM по HTTPS (OAuth2 + mTLS)")
+  }
+
+  Container(CRM, "CRM кол-центра\nJava + Spring Boot", "Интерфейс консультантов") {
+    ContainerDb(CRM_DB, "CRM DB\nPostgreSQL", "Хранит ставки, обращения клиентов")
+  }
+
+  Container_Ext(PartnerCRM, "Партнёрский кол-центр", "Импортирует ставки из CSV")
+  Container_Ext(SFTP, "SFTP-сервер\nOpenSSH + SSL", "Хранит зашифрованные CSV-файлы")
+  Container_Ext(Monitoring, "Prometheus + Grafana", "Мониторинг ошибок и доступности")
+}
+
+' Взаимодействия
+Rel(CSVGen, ABS, "Чтение ставок", "SQL / ODBC")
+Rel(CSVGen, ExportDb, "Логирует статус генерации", "ODBC")
+Rel(PGPEnc, CSVGen, "Шифрует файлы", "PGP")
+Rel(SFTPClient, PGPEnc, "Получает зашифрованный файл", "")
+Rel(SFTPClient, SFTP, "Загружает PGP-CSV", "SFTP+SSL")
+Rel(RestAPI, ExportDb, "Логирует запросы", "ODBC")
+Rel(CRM, RestAPI, "Запрашивает ставки", "HTTPS + OAuth2 + mTLS")
+Rel(ExportService, ABS, "Читает ставки", "SQL")
+Rel(PartnerCRM, SFTP, "Скачивает CSV-файлы", "SFTP")
+Rel(ExportService, Monitoring, "Метрики: ошибки, задержки", "Prometheus export")
+Rel(SFTP, Monitoring, "Метрики: SLA, доступность", "Node Exporter")
+Rel(ExportService, CRM_DB, "Передаёт утверждённые ставки", "ETL/REST")
+
+@enduml
+
